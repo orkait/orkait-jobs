@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { ApplicationList } from "@/components/admin/ApplicationList";
-import { Prisma } from "@prisma/client";
 
 async function getApplications() {
   const apps = await prisma.applications.findMany({
@@ -12,13 +11,7 @@ async function getApplications() {
     }
   });
   
-  type ApplicationWithJobTitle = Prisma.applicationsGetPayload<{
-      include: {
-          jobs: {
-              select: { title: true }
-          }
-      }
-  }>;
+  type ApplicationWithJobTitle = typeof apps[number];
 
   return apps.map((app: ApplicationWithJobTitle) => ({
     ...app,
