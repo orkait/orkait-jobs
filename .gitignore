@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# Ignore package-lock.json as we are using bun
+package-lock.json
