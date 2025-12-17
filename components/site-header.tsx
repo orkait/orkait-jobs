@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Briefcase } from "lucide-react";
+import { Briefcase, LayoutDashboard } from "lucide-react";
+import { LogoutButton } from "./logout-button";
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+    isLoggedIn?: boolean;
+}
+
+export function SiteHeader({ isLoggedIn }: SiteHeaderProps) {
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto flex h-14 items-center px-4">
@@ -23,12 +28,24 @@ export function SiteHeader() {
                     </nav>
                 </div>
                 <div className="flex flex-1 items-center justify-end space-x-2">
-                    <nav className="flex items-center">
-                        <Link href="/admin/login">
-                            <Button variant="ghost" size="sm">
-                                Admin Login
-                            </Button>
-                        </Link>
+                    <nav className="flex items-center gap-2">
+                        {isLoggedIn ? (
+                            <>
+                                <Link href="/admin/dashboard">
+                                    <Button variant="ghost" size="sm" className="gap-2">
+                                        <LayoutDashboard className="h-4 w-4" />
+                                        Dashboard
+                                    </Button>
+                                </Link>
+                                <LogoutButton />
+                            </>
+                        ) : (
+                            <Link href="/admin/login">
+                                <Button variant="ghost" size="sm">
+                                    Admin Login
+                                </Button>
+                            </Link>
+                        )}
                     </nav>
                 </div>
             </div>
