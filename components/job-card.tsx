@@ -18,19 +18,19 @@ interface JobCardProps {
 
 export function JobCard({ job }: JobCardProps) {
     return (
-        <Link href={`/jobs/${job.id}`} className="block">
-            <Card className="hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer">
+        <Link href={`/jobs/${job.id}`} className="block h-full">
+            <Card className="hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer h-full flex flex-col">
                 <CardHeader>
                     <div className="flex justify-between items-start">
                         <div>
                             <CardTitle className="text-xl font-bold">{job.title}</CardTitle>
                             <p className="text-sm text-muted-foreground mt-1">{job.department || 'Not specified'}</p>
                         </div>
-                        <Badge variant="secondary">{job.type || 'Not specified'}</Badge>
+                        <Badge variant="secondary" className="shrink-0 ml-2">{job.type || 'Not specified'}</Badge>
                     </div>
                 </CardHeader>
-                <CardContent>
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                <CardContent className="flex-1">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                         <div className="flex items-center">
                             <MapPinIcon className="mr-1 h-3 w-3" />
                             {job.location || 'Not specified'}
