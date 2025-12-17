@@ -1,19 +1,19 @@
 "use client";
 
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogClose,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { updateApplicationStatus } from "@/app/actions/application-actions";
 import { toast } from "sonner";
-import { ExternalLink, Mail, Phone, Linkedin, Globe, PanelLeft, X } from "lucide-react";
+import { ExternalLink, Mail, Phone, Linkedin, Globe, X } from "lucide-react";
 import Link from "next/link";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -58,9 +58,9 @@ export function ApplicationDetails({ application, open, onOpenChange }: Applicat
                         </div>
                         <div className="flex items-center gap-2">
                             <Badge variant={
-                                application.status === 'rejected' ? 'destructive' : 
-                                application.status === 'hired' ? 'default' : 
-                                'secondary'
+                                application.status === 'rejected' ? 'destructive' :
+                                    application.status === 'hired' ? 'default' :
+                                        'secondary'
                             } className="text-sm capitalize shrink-0">
                                 {application.status}
                             </Badge>
@@ -71,14 +71,14 @@ export function ApplicationDetails({ application, open, onOpenChange }: Applicat
                         </div>
                     </div>
                 </DialogHeader>
-                
+
                 <ResizablePanelGroup orientation="horizontal" className="flex-1 h-full min-h-0 border rounded-lg overflow-hidden">
                     {/* Left Panel - Details and Actions */}
-                    <ResizablePanel 
-                        defaultSize={300} 
-                        minSize={0} 
-                        collapsible={true} 
-                        collapsedSize={0} 
+                    <ResizablePanel
+                        defaultSize={300}
+                        minSize={0}
+                        collapsible={true}
+                        collapsedSize={0}
                         maxSize={300}
                         onResize={(size) => setIsLeftPanelCollapsed(Number(size) === 0)}
                         className={`flex flex-col h-full bg-background transition-all duration-300 ease-in-out ${isLeftPanelCollapsed ? 'py-4' : ''}`}
@@ -208,12 +208,12 @@ export function ApplicationDetails({ application, open, onOpenChange }: Applicat
                                     </Link>
                                 ) : null}
                             </div>
-                            
+
                             <div className="flex-1 bg-muted/20 overflow-hidden relative">
                                 {application.resume_url ? (
-                                    <iframe 
-                                        src={application.resume_url} 
-                                        className="w-full h-full border-none" 
+                                    <iframe
+                                        src={application.resume_url}
+                                        className="w-full h-full border-none"
                                         title="Resume Preview"
                                     />
                                 ) : (
