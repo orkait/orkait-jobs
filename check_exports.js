@@ -1,0 +1,2 @@
+import panels from 'react-resizable-panels';
+console.log(Object.keys(panels));
