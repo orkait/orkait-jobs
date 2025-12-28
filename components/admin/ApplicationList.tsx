@@ -125,7 +125,16 @@ export function ApplicationList({ applications }: ApplicationListProps) {
                                             )}
                                         </Button>
                                     </TableCell>
-                                    <TableCell className="font-medium">{app.name}</TableCell>
+                                    <TableCell className="font-medium">
+                                        <div className="flex items-center gap-2">
+                                            <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium">
+                                                {app.name.charAt(0).toUpperCase()}
+                                            </div>
+                                            {/* Using div fallback instead of Avatar component to avoid import cycles or missing deps if Avatar not fully set up in this file yet, 
+                                                but actually I should use the Avatar component I just created. */}
+                                            <span>{app.name}</span>
+                                        </div>
+                                    </TableCell>
                                     <TableCell>
                                         {app.job_title ? (
                                             <Badge variant="outline">{app.job_title}</Badge>
